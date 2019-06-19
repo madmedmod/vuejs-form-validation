@@ -1,3 +1,5 @@
+Vue.use(vuelidate.default)
+
 new Vue({
     el: '#app',
     
@@ -6,6 +8,22 @@ new Vue({
             form: {
                 name: null,
                 age: null
+            }
+        }
+    },
+
+    validations: {
+        form: {
+            name: {
+                required: validators.required
+            },
+            
+            age: {
+                required: validators.required,
+                number: validators.integer,
+                // min: validators.minValue(12),
+                // max: validators.maxValue(120),
+                between: validators.between(12, 120)
             }
         }
     },
@@ -26,7 +44,7 @@ new Vue({
 
     methods: {
         submitForm(){
-            if (this.formIsValid) {
+            if (!this.$v.form.$invalid) {
                 console.log('📝 Form Submitted', this.form)
             } else {
                 console.log('❌ Invalid form')
