@@ -44,6 +44,10 @@ new Vue({
 
     methods: {
         submitForm(){
+            // this.$v.form.name.$touch() >>> ini untuk touch(bikin dirty ketika klik submit button) input namanya aja
+            // this.$v.form.age.$touch() >>> ini utk input age nya aja
+            this.$v.form.$touch() // ini untuk semua input di form nya, dan best practice pake yg ini
+            this.$v.$touch() // ini untuk touch semua elemen termasuk selain form, lebih baik ga pake ini biar ga ganggu elemen lain
             if (!this.$v.form.$invalid) {
                 console.log('📝 Form Submitted', this.form)
             } else {
