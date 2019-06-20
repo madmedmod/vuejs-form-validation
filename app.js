@@ -19,11 +19,11 @@ new Vue({
             },
             
             age: {
-                required: validators.required,
-                number: validators.integer,
+                required: validators.required, // $v.form.age.required
+                integer: validators.integer, // $v.form.age.integer
                 // min: validators.minValue(12),
                 // max: validators.maxValue(120),
-                between: validators.between(12, 120)
+                between: validators.between(12, 120) // $v.form.age.between
             }
         }
     },
