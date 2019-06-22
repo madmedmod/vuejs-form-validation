@@ -24,6 +24,10 @@ new Vue({
                 // min: validators.minValue(12),
                 // max: validators.maxValue(120),
                 between: validators.between(12, 120) // $v.form.age.between
+            },
+
+            email: {
+                email: validators.email
             }
         }
     },
