@@ -47,6 +47,14 @@ new Vue({
     },
 
     methods: {
+        shouldAppendValidClass (field) { // ex : field = $v.form.email
+            return !field.$invalid && field.$model && field.$dirty
+        },
+
+        shouldAppendErrorClass (field) { // ex : field = $v.form.email
+            return field.error
+        },
+
         submitForm(){
             // this.$v.form.name.$touch() >>> ini untuk touch(bikin dirty ketika klik submit button) input namanya aja
             // this.$v.form.age.$touch() >>> ini utk input age nya aja
