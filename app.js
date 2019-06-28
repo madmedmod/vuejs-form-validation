@@ -12,7 +12,8 @@ new Vue({
                 name: null,
                 age: null,
                 email: null,
-                food: null
+                newsletter: null,
+                food: null,
             }
         }
     },
@@ -33,7 +34,10 @@ new Vue({
             },
 
             email: {
-                email: validators.email
+                email: validators.email,
+                required: validators.requiredIf(function (){
+                    return !!this.form.newsletter
+                })
             },
 
             food: {
