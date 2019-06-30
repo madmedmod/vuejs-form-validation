@@ -13,8 +13,10 @@ new Vue({
                 age: null,
                 email: null,
                 newsletter: null,
+                githubUsername: null,
                 food: null,
-            }
+            },
+            userData : {}
         }
     },
 
@@ -38,6 +40,16 @@ new Vue({
                 required: validators.requiredIf(function (){
                     return !!this.form.newsletter
                 })
+            },
+
+            githubUsername: {
+                exists (value) {
+                    if (!validators.helpers.req(value)) {
+                        return true
+                    }
+                    return axios.get(`https://api.github.com/users/${value}`)
+                   
+                }
             },
 
             food: {
